@@ -1,7 +1,7 @@
 
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     height: 100%;
     width: 100%;
 }
@@ -29,7 +29,7 @@ path.line {
 .svg-container {
     display: inline-block;
     position: relative;
-    width: 100%;
+    width: 10%;
     padding-bottom: 100%; /* aspect ratio */
     vertical-align: top;
     overflow: hidden;
@@ -51,7 +51,8 @@ path.line {
 	float: left;
 }
 #info {
-
+    position: absolute;
+    margin-bottom: 20px;
 	float: right;
 	display: inline-block;
 }

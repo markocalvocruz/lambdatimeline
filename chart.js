@@ -98,8 +98,9 @@ d3.csv("Lambda.csv").then(function(data) {
             .text(d.info);
 
             info.append("a")
-            .attr("xlink:href", d.url)
-            .text(d.url);
+            .html("<a href='" + d.url + "'> Read More </a> ");
+        //    .attr("xlink:href", d.url)
+          //  .text("Read More");
 //            .html('<h1> ${d.title} </h1> <p> {d.info}  </p> <a href=#> {d.url} </a>');
 
      
