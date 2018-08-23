@@ -11,21 +11,22 @@ var yNudge = 10;
 var minDate = new Date();
 var maxDate = new Date();
 
-const xValue = d => d.xValue;
-const yValue = d => d.date;
+const yValue = d => d.xValue;
+const XValue = d => d.date;
 const titleValue = d => d.title;
 const infoValue = d => d.info;
 const urlValue = d => d.url;
 
-const xScale = d3.scaleLinear();
-const yScale = d3.scaleTime();
+const yScale = d3.scaleLinear();
+const xScale = d3.scaleTime();
 
 
 const xAxis = d3.axisBottom()
-.scale(xScale)
-.tickPadding(15);
+	.scale(xScale)
+	.tickPadding(15);
 
 const yAxis = d3.axisLeft()
+
 var radius = "4px";
 
 
@@ -36,7 +37,7 @@ var svg = d3.select("div#chart")
 			.append("svg")
 			//responsive SVG needs these 2 attributes and no width and height attr
 			.attr("preserveAspectRatio", "xMinYMin meet")
-			.attr("viewBox", "0 0 1000 400")
+			.attr("viewBox", "0 0 1000 100")
 			//class to make it responsive
  		    .classed("svg-content-responsive", true); 
 
@@ -45,37 +46,39 @@ var g = svg.append("g")
 			.attr("transform","translate("+xNudge+","+yNudge+")");
 
 d3.csv("Lambda.csv").then(function(data) {
+
 	var data = data;
 	data.forEach(function(d) {
 		d.date = parseDate(d.date);
 	});
 	minDate = d3.min(data, d => d.date);
 	maxDate = d3.max(data, d => d.date);
-	console.log(minDate, maxDate);
-	xScale
+	yScale
 		.domain([0,0])
 		.range([0,0])
 
-	yScale
-		.domain([maxDate, minDate])
-		.range([0, 400])
+	xScale
+		.domain([minDate, maxDate])
+		.range([0, 800])
 		.nice()
-	yAxis.scale(yScale)
+	xAxis.scale(xScale)
+	console.log(xScale(data[0].date))
 	//SVG
 	g.selectAll('.dot')
 		.data(data)
 		.enter()
 		.append("svg:circle")
 		.attr("class", "nodes")
-		.attr("cx", 0)
-		.attr("cy", d => yScale(yValue(d)))
+		.attr("cy", 0)
+		.attr("cx", d => xScale(d.date))
 		.attr("r", radius)
 		.attr("fill", "black")
 		.on("mouseover", handleMouseOver)
 		.on("mouseout", handleMouseOut);
+
 	g.append("g")
-	.attr("class","axis y")
-	.call(yAxis);
+	.attr("class","axis x")
+	.call(xAxis);
 
 
 	});

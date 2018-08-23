@@ -29,7 +29,7 @@ path.line {
 .svg-container {
     display: inline-block;
     position: relative;
-    width: 10%;
+    width: 100%;
     padding-bottom: 100%; /* aspect ratio */
     vertical-align: top;
     overflow: hidden;
@@ -50,9 +50,4 @@ path.line {
 	display: inline-block;
 	float: left;
 }
-#info {
-    position: absolute;
-    margin-bottom: 20px;
-	float: right;
-	display: inline-block;
-}
+
