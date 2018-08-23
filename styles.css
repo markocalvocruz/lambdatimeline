@@ -1,0 +1,57 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+text {
+    font-family: arial;
+    font-size: 12px;
+}
+
+
+path.line {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: slategray;
+  shape-rendering: crispEdges;
+}
+
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.dot {
+  stroke: #000;
+}
+
+#chart {
+	position: absolute;
+	display: inline-block;
+	float: left;
+}
+#info {
+
+	float: right;
+	display: inline-block;
+}
