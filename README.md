@@ -9,7 +9,6 @@ TODO:
 4. Fix Timeline Overflow 
 5. Implement Better Axis Labels
 7. Add Product Launches between March - May 
-9. There's no number 6
 
 
 Original Design Mockup:
