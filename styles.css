@@ -51,3 +51,16 @@ path.line {
 	float: left;
 }
 
+.button {
+  color: #427499;
+/*  border-color: #427499;
+    background: white;*/
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 8px;
+  padding: .5em 1rem;
+  color: black;
+
+}
+

@@ -90,15 +90,18 @@ d3.csv("Lambda.csv").then(function(data) {
 			.classed("info-container", true); //container class
 
 			info.append("h1")
-            .text(d.title + " " + d.date.toLocaleDateString());
+				.attr("class", "event-title")
+	            .text(d.title + " " + d.date.toLocaleDateString());
 
             info.append("p")
             .text(d.info);
 
             info.append("a")
-            .html("<a href='" + d.url + "'> Read More </a> ");
+            	.attr("xlink:href", d.url)
+            	.attr("class", "button")
+            //.html("<a href='" + d.url + "'> Read More </a> ");
         //    .attr("xlink:href", d.url)
-          //  .text("Read More");
+          		.text('Read More \u2192 ');
 //            .html('<h1> ${d.title} </h1> <p> {d.info}  </p> <a href=#> {d.url} </a>');
 
      
