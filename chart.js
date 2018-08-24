@@ -125,13 +125,15 @@ function handleMouseOver(d, i) {  // Add interactivity
 
 	//Event Date
 	info.append("div")
-		.attr("class", "event-date-container")
+		.attr("class", "right-align-container")
 		.append("span")
 		.attr("class", "event-date")
         .text(d.date.toString().slice(4,10));
 
     //Event Title
-	info.append("h1")
+	info.append("div")
+		.attr("class", "center-align-container")
+		.append("h1")
 		.attr("class", "event-title")
         .text(d.title);
 
@@ -142,11 +144,17 @@ function handleMouseOver(d, i) {  // Add interactivity
 
     //Event Read More Button
     info.append("div")
-    	.attr("class", "read-more-container")
+    	.attr("class", "center-align-container")
         .append("a")
+        .attr("class", "my-3")
     	.attr("xlink:href", d.url)
     	.attr("class", "read-more-button")
     	.text('Read More \u2192 ');
+    info.append("div")
+    	.attr("class", "center-align-container")
+    	.append("p")
+    	.attr("class", "my-4")
+    	.text("Caution: Button Defective")
 
     //.html("<a href='" + d.url + "'> Read More </a> ");
 //    .attr("xlink:href", d.url)
