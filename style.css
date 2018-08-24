@@ -1,0 +1,114 @@
+
+@font-face {
+font-family: FuturaBold;
+src: url(fonts/FuturaBold.otf);
+}
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #DEF0FF;
+    font-family: 'Roboto';
+
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  width: 100%;
+  z-index: 1;
+}
+
+svg {
+  overflow: scroll;
+}
+
+
+
+
+/*
+.svg-container {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 100%; /* aspect ratio */ /*
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+*/
+/**
+
+*/
+.button {
+  color: #3A3A3A;;
+/*  border-color: #427499; 
+    background: white; */
+  border-color: black;
+  border-style: solid;
+  border-width: .04rem;
+  border-radius: 8px;
+  padding: 1em 2rem;
+  color: #3A3A3A;
+  height: 50;
+  width: 50 * 3.927;
+}
+
+
+
+
+.event-title {
+  font-family: FuturaBold;
+  text-align: center;
+  color: #3A3A3A;
+}
+.event-description {
+  text-align: center;
+  font-size: 20px;
+}
+
+.axis-y {
+  fill: none;
+  stroke-width: 17px;/*17px;*/
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  color: #3A3A3A;
+}
+
+
+
+.read-more-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 2em;
+}
+
+
+
+
+#main-window {
+  height: 700px;
+  overflow: hidden;
+}
+
+/* SVG */
+
+.svg-container {
+  margin-top: -2.6em;
+}
+
+#chart {
+  overflow: hidden;
+}
+.node-label {
+  font-size: .65rem;
+  color: #3A3A3A;
+}
+
