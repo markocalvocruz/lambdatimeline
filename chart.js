@@ -1,5 +1,5 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
-var xNudge = 100;
+var xNudge = 160;
 var yNudge = 10;
 
 /*COLORS START */
@@ -22,7 +22,7 @@ const yAxis = d3.axisLeft()
 	.tickSize(0);
 
 
-var radius = "20.4px";
+var radius = "20px";
 
 
 	
@@ -78,6 +78,7 @@ d3.csv("Lambda.csv").then(function(data) {
 
 	node.append("svg:circle")
 		.attr("class", "nodes")
+		.attr("cx", 0)
 		.attr("cy", d => yScale(dateValue(d)))
 		.attr("r", radius)
 		.attr("fill", "#3A3A3A")
@@ -122,22 +123,33 @@ function handleMouseOver(d, i) {  // Add interactivity
 			.append("div")
 	.classed("info-container", true); //container class
 
+	//Event Date
+	info.append("div")
+		.attr("class", "event-date-container")
+		.append("span")
+		.attr("class", "event-date")
+        .text(d.date.toString().slice(4,10));
+
+    //Event Title
 	info.append("h1")
 		.attr("class", "event-title")
         .text(d.title);
 
+    //Event Description
     info.append("p")
     	.attr("class", "event-description")
     	.text(d.info);
 
+    //Event Read More Button
     info.append("div")
     	.attr("class", "read-more-container")
         .append("a")
     	.attr("xlink:href", d.url)
-    	.attr("class", "button")
+    	.attr("class", "read-more-button")
+    	.text('Read More \u2192 ');
+
     //.html("<a href='" + d.url + "'> Read More </a> ");
 //    .attr("xlink:href", d.url)
-  		.text('Read More \u2192 ');
 //            .html('<h1> ${d.title} </h1> <p> {d.info}  </p> <a href=#> {d.url} </a>');
 	
 
