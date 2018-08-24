@@ -125,7 +125,7 @@ function handleMouseOver(d, i) {  // Add interactivity
 
 	//Event Date
 	info.append("div")
-		.attr("class", "right-align-container")
+		.attr("class", "center-align-container")
 		.append("span")
 		.attr("class", "event-date")
         .text(d.date.toString().slice(4,10));
