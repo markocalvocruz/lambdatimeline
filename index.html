@@ -13,31 +13,24 @@
   </head>
   <body>
     <nav class="navbar">
-      <img class="navbar-logo" src="logo.svg" alt="Lambda School" />
-    </nav>
-    <div class="container-fluid">
-
-      <div class="row">
-        <div class="col">
-          <em>
-            "What will it take to launch that in the next 30  minutes?"
-            Most of the time you can launch something as a hyper-MVP and test it quicker than you can talk about it and figure out if it's a good idea
-          </em>
-        </div>
-
+      <div class="container-fluid">
+        <img class="navbar-logo" src="logo.svg" alt="Lambda School" />
       </div>
-      <div class="row">
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row my-3" id="main-window">
         <div class="col-4">
           <div id="chart"></div>
         </div>
         <div class="col">
           <div id="info">
-            <p> Instructions: Hover over a dot to see what launched on that day!</p>
-
+            <p id="instructions"> Instructions: Hover over a dot to see what launched on that day!</p>
           </div>
         </div>
+        <div class="col-2">
+        </div>
       </div>
-    </div>
 
 
 	  <script src="chart.js"'></script>
