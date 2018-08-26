@@ -62,13 +62,13 @@ d3.csv("Lambda.csv").then(function(data) {
 
 	//Config Scale for Vertical Timeline
 	yScale 
-		.domain([maxDate.addMonths(.5), minDate])
+		.domain([maxDate, minDate])
 		.range([0, 1000])
 		.nice();
 
 	//Config Axis
 	yAxis.scale(yScale)
-		.ticks(6); //revisit: arbitrary number 
+		.ticks(7); //revisit: arbitrary number 
 
 	//Add Axis to SVG
 	svg.append("g")

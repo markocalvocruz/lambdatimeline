@@ -8,10 +8,11 @@ body {
     margin: 0;
     background-color: #DEF0FF;
     font-family: 'Roboto';
-    padding-bottom: 3em;
 }
 
-
+nav {
+  height: 8vh;
+}
 text {
    font-size: 1.5em;
 
@@ -21,13 +22,15 @@ text {
 }
 
 #main-window {
-  height: 824px;
-  overflow-x: hidden;
+  height: 100vh;
 }
 
+#body-container {
+  height: 92vh;
+}
 
 #chart-container {
-  height: 100% ;
+  height: 92vh;
   overflow-x: auto;
 }
 

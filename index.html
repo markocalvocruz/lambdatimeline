@@ -15,20 +15,17 @@
 
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container-fluid">
-      
-        <img class="navbar-logo" id="logo" src="Lambda-Name.svg" alt="Lambda School" />
-
-
-    </div>
+    <div id="main-window">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <img class="navbar-logo" id="logo" src="Lambda-Name.svg" alt="Lambda School" />
+        </div>
         <!-- <img class="navbar-logo" id="logo" src="logo.svg" alt="Lambda School" />  WAIT UNTIL APPROVAL GRANTED-->
-      </div>
-    </nav>
+      </nav>
 
-    <div class="container-fluid">
-      <div class="row" id="main-window">
-        <div class="col-4" id="chart-container">
+    <div class="container-fluid" id="body-container">
+      <div class="row">
+        <div class="col-3" id="chart-container">
            <svg id="chart"></svg>
         </div>
         <div class="col-7">
@@ -41,24 +38,23 @@
               <a href="#" class="my-3 read-more-button"></a>
             </div>
           </div>
-          <div class="row justify-content-md-center my-2" id="footer">
+          <div class="row justify-content-md-center" id="footer">
             <div class="col-md-6 col-xs-12">
                 <a class="center action-link" href="https://lambdaschool.com/">Learn More</a>
             </div>
-            <div class="col-md-2 col-xs-12">
+            <div class="col-md-6 col-xs-12">
 
-              <a class="action-link my-2" href="https://github.com/markocalvocruz/lambdatimeline">Github Repo</a>
+              <a class="action-link" href="https://github.com/markocalvocruz/lambdatimeline">Github Repo</a>
             </div>
 
           </div>
         </div>
 
       </div>
+      <div class="row">
+      </div>  
     </div>
-    <div class="container">
-
-    </div>
-
+  </div>
 
 	  <script src="chart.js"'></script>
   </body>
