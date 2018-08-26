@@ -2,19 +2,25 @@ var parseDate = d3.timeParse("%m/%d/%Y");
 var xNudge = 160;
 var yNudge = 10;
 
-/*COLORS START */
+/*Define Margins *NOT BEING USED CURRENTLY*
+var margin = {top: 20, right: 80, bottom: 30, left: 50},
+    width = parseInt(d3.select("#chart-container").style("width")) - margin.left - margin.right,
+    height = parseInt(d3.select("#chart-container").style("height")) - margin.top - margin.bottom;
+*/
+var margin = {top: 20, right: 80, bottom: 30, left: 125};
+// Define Colors
 var unselectedColor = "#3A3A3A";
 var selectedColor = "#21AAD3";
-/*COLORS END */
 
-/* CSV VALUES START */
+
+// Define CSV Values
 const dateValue = d => d.date;
 const titleValue = d => d.title;
 const infoValue = d => d.info;
 const urlValue = d => d.url;
-/* CSV VALUES END */
 
 
+//Define scales
 const yScale = d3.scaleTime();
 const yAxis = d3.axisLeft()
 	.tickPadding(50)
@@ -25,22 +31,23 @@ const yAxis = d3.axisLeft()
 var radius = "20px";
 
 
-	
-var svg = d3.select("div#chart")
-			.append("div")
-			.classed("svg-container", true) //container class					 
-			.append("svg")
+//Define SVG canvas	
+var svg = d3.select("#chart")
 			//responsive SVG needs these 2 attributes and no width and height attr
 			.attr("preserveAspectRatio", "xMinYMin meet")
-			.attr("viewBox", "0 0 200 1000")
-			//class to make it responsive
- 		    .classed("svg-content-responsive", true); 
+			.attr("viewBox", "0 0 150 1000")
+			//.attr("width", width + margin.left + margin.right)
+         	//.attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+			//class to make it responsive
+/**
 var g = svg.append("g")
 			.attr("class","chartGroup")
 			.attr("transform","translate("+xNudge+","+yNudge+")");
 
-
+**/
 d3.csv("Lambda.csv").then(function(data) {
 
 	//Process Dates
@@ -48,29 +55,31 @@ d3.csv("Lambda.csv").then(function(data) {
 		d.date = parseDate(dateValue(d));
 	});
 
-	/* AXIS START */
 
-	//DOMAIN FOR DATE-AXIS 
+	//Define Timeline Domain
 	var minDate = d3.min(data, d => dateValue(d));
 	var maxDate = d3.max(data, d => dateValue(d));
 
-	yScale //Vertical Timeline
+	//Config Scale for Vertical Timeline
+	yScale 
 		.domain([maxDate.addMonths(.5), minDate])
 		.range([0, 1000])
 		.nice();
 
+	//Config Axis
 	yAxis.scale(yScale)
 		.ticks(6); //revisit: arbitrary number 
 
-	g.append("g")
+	//Add Axis to SVG
+	svg.append("g")
 		.attr("class","axis-y")
 		.call(yAxis);
 
-	/*AXIS END */
+
 
 	/* PLOTTING START */
 
-	var node = g.selectAll('.node')
+	var node = svg.selectAll('.node')
 		.data(data)
 		.enter()
 		.append("g")
@@ -87,13 +96,12 @@ d3.csv("Lambda.csv").then(function(data) {
 
 	/* PLOTTING END */
 
-	/* 
+	/*
 	SOMEHOW RELATED TO COLLISION DETECTION
 	SOURCE: http://bl.ocks.org/fabiovalse/bf9c070d0fa6bab79d6a
-
+	
 	var force = d3.layout.force()
-	    .nodes(nodes)
-	    .size([width, height])
+	    .nodes(node)
 	    .gravity(.02)
 	    .charge(0)
 	    .on("tick", tick)
@@ -112,6 +120,7 @@ function handleMouseOver(d, i) {  // Add interactivity
     d3.select(".info-container").remove();
     d3.select("#instructions").remove();
 
+    //Change Selected Circle Color
     d3.selectAll("circle")
       	.attr("fill", unselectedColor);
 
@@ -119,47 +128,27 @@ function handleMouseOver(d, i) {  // Add interactivity
     d3.select(this)
     	.attr("fill", selectedColor)
     	.attr("r", radius);
+
+
     var info = d3.select("div#info")
-			.append("div")
-	.classed("info-container", true); //container class
-
+	
 	//Event Date
-	info.append("div")
-		.attr("class", "center-align-container")
-		.append("span")
-		.attr("class", "event-date")
-        .text(d.date.toString().slice(4,10));
+	info.select(".event-date")
+		 .text(d.date.toString().slice(4,10));
 
-    //Event Title
-	info.append("div")
-		.attr("class", "center-align-container")
-		.append("h1")
-		.attr("class", "event-title")
+	//Event Title
+	info.select(".event-title")	
         .text(d.title);
-
     //Event Description
-    info.append("p")
-    	.attr("class", "event-description")
+    info.select(".event-description")
     	.text(d.info);
 
-    //Event Read More Button
-    info.append("div")
-    	.attr("class", "center-align-container")
-        .append("a")
-        .attr("class", "my-3")
-    	.attr("xlink:href", d.url)
-    	.attr("class", "read-more-button")
+    //Read More Button
+    info.select(".read-more-button")
+    	.attr("href", d.url)
+    	.style("visibility", "visible")
     	.text('Read More \u2192 ');
-    info.append("div")
-    	.attr("class", "center-align-container")
-    	.append("p")
-    	.attr("class", "my-4")
-    	.text("Caution: Button Defective")
 
-    //.html("<a href='" + d.url + "'> Read More </a> ");
-//    .attr("xlink:href", d.url)
-//            .html('<h1> ${d.title} </h1> <p> {d.info}  </p> <a href=#> {d.url} </a>');
-	
 
 }
 
@@ -176,6 +165,38 @@ Date.prototype.addMonths = function (m) {
     if (months) d.setMonth(d.getMonth() + months);
     return d;
 }
+
+
+/*	Responsive
+	Define responsive behavior
+ 	Source : https://bl.ocks.org/josiahdavis/7a02e811360ff00c4eef
+*/
+function resize() {
+  var width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+  height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
+
+  // Update the range of the scale with new width/height
+  xScale.range([0, width]);
+  yScale.range([height, 0]);
+
+  // Update the axis and text with the new scale
+  svg.select('.x.axis')
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  svg.select('.y.axis')
+    .call(yAxis);
+
+  // Force D3 to recalculate and update the line
+  svg.selectAll('.line')
+    .attr("d", function(d) { return line(d.datapoints); });
+
+  // Update the tick marks
+  xAxis.ticks(Math.max(width/75, 2));
+  yAxis.ticks(Math.max(height/50, 2));
+
+};
+
 //Date function ends
 
 
@@ -184,6 +205,8 @@ Date.prototype.addMonths = function (m) {
 	SOURCE: http://bl.ocks.org/fabiovalse/bf9c070d0fa6bab79d6a
 */
 
+
+/* COLLISION DETECTION: NOT BEING USED 
 function tick(e) {
 	//force.alpha(.01);
 
@@ -245,3 +268,8 @@ function gravity(alpha) {
 		d.x += (d.cx - d.x) * alpha;
 	};
 }
+*/
+
+
+
+

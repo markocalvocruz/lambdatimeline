@@ -28,26 +28,35 @@
 
     <div class="container-fluid">
       <div class="row" id="main-window">
-        <div class="col-3">
-          <div id="chart"></div>
+        <div class="col-4" id="chart-container">
+           <svg id="chart"></svg>
         </div>
-        <div class="col">
+        <div class="col-7">
           <div id="info">
             <p id="instructions"> Instructions: Hover over a dot to see what launched on that day!</p>
-            <p id="instructions"> Known Issues: "Read More" button not clickable.</p>
+            <div class="center-align-container">
+              <span class="event-date"></span>
+              <h1 class="event-title"></h1>
+              <p class="event-description"></p>
+              <a href="#" class="my-3 read-more-button"></a>
+            </div>
+          </div>
+          <div class="row justify-content-md-center my-2" id="footer">
+            <div class="col-xs-2">
+                <a class="center action-link" href="https://lambdaschool.com/">Learn More about Lambda School</a>
+            </div>
+            <div class="col-xs-2">
+
+              <a class="action-link" href="https://github.com/markocalvocruz/lambdatimeline">Github Repo</a>
+            </div>
+
           </div>
         </div>
-        <div class="col-2">
-        </div>
+
       </div>
     </div>
     <div class="container">
-      <div class="row center-align-container">
-          <a class="center action-link" href="https://lambdaschool.com/">Learn More about Lambda School</a>
-          
 
-          <a class="action-link" href="https://github.com/markocalvocruz/lambdatimeline">Github Repo</a>
-      </div>
     </div>
 
 
