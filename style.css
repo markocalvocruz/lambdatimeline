@@ -137,6 +137,7 @@ nav {
 .action-link:hover {
   text-decoration:none;
   color: #AF0015;
+  border-color: #AF0015;
 }
 
 /* FOOTER END */
