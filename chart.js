@@ -53,14 +53,14 @@ d3.csv("Lambda.csv").then(function(data) {
 	//Process Dates
 	data.forEach(function(d) {
 		d.date = parseDate(dateValue(d));
-		d.radius = 3
+		d.radius = 3;
 	});
 
 
 	//Define Timeline Domain
 	var minDate = d3.min(data, d => dateValue(d));
 	var maxDate = d3.max(data, d => dateValue(d));
-
+	console.log(maxDate,minDate);
 	//Config Scale for Vertical Timeline
 	yScale 
 		.domain([maxDate, minDate])
@@ -92,12 +92,9 @@ d3.csv("Lambda.csv").then(function(data) {
 		.attr("cy", d => yScale(dateValue(d)))
 		.attr("r", radius)
 		.attr("fill", "#3A3A3A")
-		.forceCollide()
 		.on("mouseover", handleMouseOver)
 		.on("mouseout", handleMouseOut);
 
-	var nodes = svg.selectAll(".node")
-	svg.forceCollide(radius);
 	/* PLOTTING END */
 
 	/*
@@ -115,25 +112,6 @@ d3.csv("Lambda.csv").then(function(data) {
 	*/
 });
 
-
-function ticked() {
-  var u = d3.select('svg')
-    .selectAll('circle')
-    .data(nodes)
-
-  u.enter()
-    .append('circle')
-    .attr('r', radius)
-    .merge(u)
-    .attr('cx', function(d) {
-      return d.x
-    })
-    .attr('cy', function(d) {
-      return d.y
-    })
-
-  u.exit().remove()
-}
 /* HELPER FUNCTIONS START */
 
 // Create Event Handlers for mouse
