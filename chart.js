@@ -1,4 +1,6 @@
 var parseDate = d3.timeParse("%m/%d/%Y");
+var timeParse = d3.timeFormat("%B %d");
+
 var xNudge = 160;
 var yNudge = 10;
 
@@ -15,6 +17,7 @@ var selectedColor = "#21AAD3";
 
 // Define CSV Values
 const dateValue = d => d.date;
+var orderValue = d => d.date;
 const titleValue = d => d.title;
 const infoValue = d => d.info;
 const urlValue = d => d.url;
@@ -22,9 +25,10 @@ const urlValue = d => d.url;
 
 //Define scales
 const yScale = d3.scaleTime();
+//const yScale = 150 * d.orderValue
 const yAxis = d3.axisLeft()
 	.tickPadding(50)
-	.tickFormat(d3.timeFormat("%B"))
+	.tickFormat(d3.timeFormat(""))
 	.tickSize(0);
 
 
@@ -49,18 +53,21 @@ var g = svg.append("g")
 
 **/
 d3.csv("Lambda.csv").then(function(data) {
-
+	order = 0
 	//Process Dates
 	data.forEach(function(d) {
 		d.date = parseDate(dateValue(d));
+		//d.date = timeParse(dateValue(d));
 		d.radius = 3;
+		d.orderValue = order;
+		d.y = order * 120;
+		order += 1;
 	});
 
 
 	//Define Timeline Domain
 	var minDate = d3.min(data, d => dateValue(d));
 	var maxDate = d3.max(data, d => dateValue(d));
-	console.log(maxDate,minDate);
 	//Config Scale for Vertical Timeline
 	yScale 
 		.domain([maxDate, minDate])
@@ -79,7 +86,6 @@ d3.csv("Lambda.csv").then(function(data) {
 
 
 	/* PLOTTING START */
-
 	var node = svg.selectAll('.node')
 		.data(data)
 		.enter()
@@ -89,11 +95,19 @@ d3.csv("Lambda.csv").then(function(data) {
 	node.append("svg:circle")
 		.attr("class", "nodes")
 		.attr("cx", 0)
-		.attr("cy", d => yScale(dateValue(d)))
+		.attr("cy", d => d.y) //d => yScale(dateValue(d)))
 		.attr("r", radius)
 		.attr("fill", "#3A3A3A")
 		.on("mouseover", handleMouseOver)
 		.on("mouseout", handleMouseOut);
+
+	node.append("text")
+	  .attr("class", "node-label")
+	  //.attr("class", "ml-auto")
+	  .attr("x", d => -110)
+	  .attr("y", d => d.y)
+	  //.text("hi");
+	  .text(d => timeParse(d.date));
 
 	/* PLOTTING END */
 

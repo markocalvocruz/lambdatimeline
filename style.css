@@ -4,15 +4,16 @@
   font-family: FuturaBold;
   src: url(fonts/FuturaBold.otf);
 }
+@font-face {
+  font-family: Oswald;
+  src: url(fonts/Oswald-Regular.ttf);
+}
 body {
     margin: 0;
     background-color: #DEF0FF;
     font-family: 'Roboto';
 }
 
-nav {
-  height: 8vh;
-}
 text {
    font-size: 1.5em;
 
@@ -45,15 +46,23 @@ nav {
   background-color: white;
   z-index: 1;
 }
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
 
 #logo {
-  width: 100px;
+  width: 12em;
   height: auto;
+
 }
 
 .navbar {
   padding: 1em;
+  display: flex;
+  align-items: center;
 }
+
 
 /* NAV END */
 
@@ -69,9 +78,12 @@ nav {
 }
 
 .node-label {
-  font-size: .65rem;
+  font-family: Oswald;
+  font-size: 1.3rem;
+  text-align: right;
   color: #3A3A3A;
 }
+
 
 
 /* EVENT INFO START */
@@ -93,7 +105,7 @@ nav {
   margin-bottom: 2rem;
 }
 .event-date {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans Light';
   font-size: 30px;
 } 
 .read-more-button {
@@ -110,6 +122,12 @@ nav {
 .read-more-button:hover {
   text-decoration: none;
   color: #AF0015;
+}
+
+#join-lambda {
+  font-family: 'Open Sans Light';
+  color: #000000;
+  margin: 2rem;
 }
 
 /* EVENT INFO END */

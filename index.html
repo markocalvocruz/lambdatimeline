@@ -18,24 +18,27 @@
     <div id="main-window">
       <nav class="navbar">
         <div class="container-fluid">
-          <img class="navbar-logo" id="logo" src="Lambda-Name.svg" alt="Lambda School" />
+          <div class="navbar-header">
+              <img class="mx-4 nav navbar-nav navbar-logo align-middle" id="logo" src="logo.svg" alt="Lambda School" />  
+          </div>
+<!--          <img class="navbar-logo" id="logo" src="Lambda-Name.svg" alt="Lambda School" /> -->
         </div>
-        <!-- <img class="navbar-logo" id="logo" src="logo.svg" alt="Lambda School" />  WAIT UNTIL APPROVAL GRANTED-->
       </nav>
 
     <div class="container-fluid" id="body-container">
       <div class="row">
-        <div class="col-3" id="chart-container">
+        <div class="col-2" id="chart-container">
            <svg id="chart"></svg>
         </div>
-        <div class="col-7">
+        <div class="col-6 offset-md-2">
           <div id="info">
             <p id="instructions"> Instructions: Hover over a dot to see what launched on that day!</p>
             <div class="center-align-container">
               <span class="event-date"></span>
               <h1 class="event-title"></h1>
               <p class="event-description"></p>
-              <a href="#" class="my-3 read-more-button"></a>
+              <a href="#" class="my-3 read-more-button"></a><br />
+              <a class="center" id="join-lambda" href="https://lambdaschool.com/">Join Lambda School Today!</a>
             </div>
           </div>
           <div class="row justify-content-md-center" id="footer">
